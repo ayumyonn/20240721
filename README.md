@@ -58,4 +58,4 @@ Googleマップとの連動
 https://www.figma.com/board/VkaLs66NBslWNYY5GFoax9/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?t=K9FgYGfDE088auYM-6
 
 ■ ER図
-https://drive.google.com/file/d/1avfY1Aobif1mhFQzbEfA7eMHPMarbrDH/view?usp=sharing
+https://gyazo.com/8fbf8e958a5b699646802f7bb97cb255
