@@ -1,3 +1,28 @@
+# README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
 ■サービス概要
 行ったお店をジャンル別で管理できるサービスです。
 行き先に迷ったときには、過去を振り返って、お気に入りの場所ならもう一度その場所へ。
