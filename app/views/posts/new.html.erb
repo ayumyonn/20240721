@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <h1><%= '新規投稿' %></h1>
+      <%= form_with model: @post, class: "new_post" do |f| %>
+        <div class="mb-3">
+          <%= f.label :place_name %>
+          <%= f.text_field :place_name, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :adress %>
+          <%= f.text_field :adress, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :body %>
+          <%= f.text_area :body, class: "form-control", rows: "10" %>
+        </div>
+        <%= f.submit nil, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
