@@ -2,12 +2,17 @@ class UsersController < ApplicationController
   # skip_before_action :require_login, only: %i[new create]
 
   def new
+    Rails.logger.debug "new"
+    Rails.logger.debug "new"
+    Rails.logger.debug "new"
+
     @user = User.new
   end
 
   def create
-
-    Rails.logger.debug params.inspect
+    Rails.logger.debug "create"
+    Rails.logger.debug "create"
+    Rails.logger.debug "create"
 
     @user = User.new(user_params)
     if @user.save
