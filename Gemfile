@@ -34,3 +34,5 @@ gem "oauth2", "~> 2.0.9"
 
 # Optional bcrypt for user authentication
 gem "bcrypt", "~> 3.1.7"
+
+gem 'carrierwave', '2.2.2'
