@@ -24,7 +24,7 @@
             <div class='dropdown-item'><%= current_user.user_name %></div>
             <div class='dropdown-divider'></div>
             <%= link_to 'プロフィール', '#', class: 'dropdown-item' %>
-            <%= link_to 'ログアウト', login_path, class: 'dropdown-item' %>
+            <%= link_to 'ログアウト', login_path, method: :delete, class: 'dropdown-item' %>
           </div>
         </li>
       </ul>
