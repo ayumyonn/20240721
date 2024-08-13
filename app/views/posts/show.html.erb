@@ -1,0 +1,34 @@
+<div class="container pt-5">
+  <div class="row mb-3">
+    <div class="col-lg-8 offset-lg-2">
+      <h1><%= '掲示板詳細' %></h1>
+      <article class="card">
+        <div class="card-body">
+          <div class="row">
+            <div>
+              <%= link_to "#{@post.user.user_name}" %>
+            </div>
+            <div class='d-flex justify-content-end'>
+              <%= link_to "#", id: "button-edit-#{@post.id}" do %>
+                <i class='bi bi-pencil-fill'></i>
+              <% end %>
+              <%= link_to "#", id: "button-delete-#{@post.id}", class: "ms-2" do %>
+                <i class="bi bi-trash-fill"></i>
+              <% end %>
+            </div>
+            <div class="col-md-3">
+              <%= image_tag @post.post_image_url, width: "300", height: "200", class: "card-img-top img-fluid" %>
+            </div>
+            <div class="col-md-9">
+              <h3 style="display: inline;"><%= @post.place_name %></h3>
+              <p><%= simple_format "〒:#{@post.adress}" %></p>
+              <p><%= simple_format(@post.body) %></p>
+              <ul class="list-inline">
+                <li class="list-inline-item"><%= l @post.created_at, format: :long %></li>
+              </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>

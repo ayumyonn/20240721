@@ -1,5 +1,9 @@
   <div class="col-sm-12 col-lg-4 mb-3">
-    <div class="card">
-      <%= image_tag post.post_image.url, width: "416", height: "202" %>
+    <div id="post-id-<%= post.id %>">
+      <div class="card">
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.post_image.url, width: "416", height: "202" %>
+        <% end %>
+      </div>
     </div>
   </div>
