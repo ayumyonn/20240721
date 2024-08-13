@@ -9,4 +9,8 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   has_many :posts, dependent: :destroy
+
+  def own?(post)
+    self.id == post.user_id
+  end
 end

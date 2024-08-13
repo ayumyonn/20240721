@@ -8,14 +8,17 @@
             <div>
               <%= link_to "#{@post.user.user_name}" %>
             </div>
-            <div class='d-flex justify-content-end'>
-              <%= link_to "#", id: "button-edit-#{@post.id}" do %>
-                <i class='bi bi-pencil-fill'></i>
-              <% end %>
-              <%= link_to "#", id: "button-delete-#{@post.id}", class: "ms-2" do %>
-                <i class="bi bi-trash-fill"></i>
-              <% end %>
-            </div>
+
+            <% if current_user.own?(@post) %>
+              <div class='d-flex justify-content-end'>
+                <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}" do %>
+                  <i class='bi bi-pencil-fill'></i>
+                <% end %>
+                <%= link_to post_path(@post), id: "button-delete-#{@post.id}", class: "ms-2", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
+                  <i class="bi bi-trash-fill"></i>
+                <% end %>
+              </div>
+            <% end %>
             <div class="col-md-3">
               <%= image_tag @post.post_image_url, width: "300", height: "200", class: "card-img-top img-fluid" %>
             </div>
