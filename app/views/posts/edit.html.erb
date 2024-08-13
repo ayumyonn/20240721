@@ -3,7 +3,29 @@
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
       <h1><%= '掲示板編集' %></h1>
-      <%= render  'form', post: @post %>
+      <%= form_with model: @post do |f| %>
+        <div class="mb-3">
+          <%= f.label :post_image %>
+          <%= f.file_field :post_image, class: "form-control", accept: 'image/*' %>
+          <%= f.hidden_field :post_image_cache %>
+        </div>
+        <div class="col-md-3">
+          <%= image_tag @post.post_image_url, width: "300", height: "200", class: "card-img-top img-fluid" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :place_name %>
+          <%= f.text_field :place_name, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :adress %>
+          <%= f.text_field :adress, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :body %>
+          <%= f.text_area :body, class: "form-control", rows: "10" %>
+        </div>
+        <%= f.submit nil, class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>
