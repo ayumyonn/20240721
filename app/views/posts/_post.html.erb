@@ -4,6 +4,7 @@
         <%= link_to post_path(post) do %>
           <%= image_tag post.post_image.url, width: "416", height: "202" %>
         <% end %>
+        <%= render 'bookmark_buttons', { post: post } %>
       </div>
     </div>
   </div>
