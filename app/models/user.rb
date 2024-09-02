@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
 
+  mount_uploader :avatar, AvatarUploader
+
   def own?(post)
     self.id == post.user_id
   end
