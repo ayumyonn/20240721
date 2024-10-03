@@ -2,8 +2,7 @@ class ProfilesController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def show
-    # @user = User.find(params[:id])
-    # @posts = @user.posts
+    @posts = current_user.posts.includes(:user).order(created_at: :desc) # 投稿を取得
   end
 
   def edit
@@ -11,7 +10,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user
+      redirect_to profile_path(@user)
     else
       render :edit
     end
