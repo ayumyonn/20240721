@@ -2,7 +2,8 @@ class ProfilesController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def show
-    @posts = current_user.posts.includes(:user).order(created_at: :desc) # 投稿を取得
+    @posts = @user.posts.includes(:user).order(created_at: :desc) # 投稿を取得
+
   end
 
   def edit
@@ -19,8 +20,8 @@ class ProfilesController < ApplicationController
   private
 
   def set_user
-    @user = User.find(current_user.id)
-    # @user = User.find(params[:id])
+    # @user = User.find_by(params[:id])
+    @user = User.find(params[:id]) # idを指定してユーザーを取得
   end
 
   def user_params
