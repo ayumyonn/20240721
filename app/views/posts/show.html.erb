@@ -2,11 +2,12 @@
   <div class="row mb-3">
     <div class="col-lg-8 offset-lg-2">
       <h1><%= '掲示板詳細' %></h1>
+
       <article class="card">
         <div class="card-body">
           <div class="row">
             <div>
-              <%= link_to "#{@post.user.user_name}", profile_path %>
+              <%= link_to "#{@post.user.user_name}", profile_path(@post.user) %>
             </div>
 
             <div class='d-flex justify-content-end'>
