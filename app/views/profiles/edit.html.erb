@@ -7,16 +7,25 @@
       <%# <%= render 'shared/error_messages', object: f.object %> 
         <div style="text-align: center;">
           <div class="mb-3">
-            <%= f.label :avatar, class: 'form-label', style: 'font-weight: bold;' %>
-            <%= f.file_field :avatar, class: 'form-control mb-3' , accept: 'image/*' %>
+            <%# <%= f.label :avatar, class: 'form-label', style: 'font-weight: bold;' %>
+            <%= f.file_field :avatar, class: 'form-control mb-3', accept: 'image/*', style: 'display: none;', id: 'avatar_upload', onchange: 'previewImage(event)' %>
             <%= f.hidden_field :avatar_cache %>
-              <div class='mt-3 mb-3'>
-                <%= image_tag @user.avatar.url,
-                  class: 'rounded-circle',
-                  id: 'preview',
-                  size: '150x150' %>
+              <div class='mt-3 mb-3' style="cursor: pointer;" onclick="document.getElementById('avatar_upload').click();">
+                <%= image_tag @user.avatar.url, class: 'rounded-circle', id: 'preview', size: '150x150' %>
               </div>
           </div>
+          <script>
+            function previewImage(event) {
+              const file = event.target.files[0];
+                if (file) {
+                  const reader = new FileReader();
+                    reader.onload = function(e) {
+                      document.getElementById('preview').src = e.target.result;
+                    };
+                  reader.readAsDataURL(file);
+                }
+              }
+          </script>
           <div class="mb-3">
             <%= f.label :email, class: 'form-label', style: 'font-weight: bold;' %>
             <%= f.email_field :email, class: "form-control" %>
@@ -25,9 +34,9 @@
             <%= f.label :user_name, class: 'form-label', style: 'font-weight: bold;' %>
             <%= f.text_field :user_name, class: "form-control" %>
           </div>
-        </div>
         <%= f.submit class: "btn btn-primary" %>
       <% end %>
+        </div>
       <div class='text-center'>
         <%= link_to 'to_login_page', login_path %>
       </div>
