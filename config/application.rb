@@ -36,4 +36,10 @@ module Myapp
     
     config.time_zone = 'Tokyo'
   end
+
+
+  class ActiveRecord::Base
+    singleton_class.attr_accessor :timestamped_migrations
+    self.timestamped_migrations = true
+  end
 end

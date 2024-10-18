@@ -9,18 +9,23 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   #  root 'static_pages#top'
-   root 'posts#index'
-   resources :users, only: %i[new create]
-   resources :posts, only: %i[index new create show edit destroy update] do
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
+  root 'posts#index'
+  resources :users, only: %i[new create]
+  resources :posts, only: %i[index new create show edit destroy update] do
     collection do
       get :bookmarks
     end
-   end
-   resources :bookmarks, only: %i[create destroy]
-   resources :profiles, only: %i[show edit update]
+  end
+  resources :bookmarks, only: %i[create destroy]
+  resources :profiles, only: %i[show edit update]
+  resources :password_resets,only: %i[create edit update]
     
 
-   get 'login', to: 'user_sessions#new'
-   post 'login', to: 'user_sessions#create'
-   delete 'logout', to: 'user_sessions#destroy'
+  get 'login', to: 'user_sessions#new'
+  post 'login', to: 'user_sessions#create'
+  delete 'logout', to: 'user_sessions#destroy'
 end

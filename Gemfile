@@ -14,6 +14,8 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[windows jruby]
 gem "bootsnap", require: false
 gem "sorcery", "0.16.5"
+# gem 'sorcery'
+# gem 'sorcery', '~> 0.15.0'
 
 group :development, :test do
   gem "debug", platforms: %i[mri windows]
@@ -36,3 +38,5 @@ gem "oauth2", "~> 2.0.9"
 gem "bcrypt", "~> 3.1.7"
 
 gem 'carrierwave', '2.2.2'
+
+gem 'letter_opener_web', '2.0.0'
