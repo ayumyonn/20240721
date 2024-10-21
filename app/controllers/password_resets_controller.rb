@@ -1,34 +1,35 @@
 class PasswordResetsController < ApplicationController
-  def new
-  end
+  skip_before_action :require_login
+
+  def new; end
 
   def create
     @user = User.find_by(email: params[:email])
-    if @user
-      @user.send_reset_password_instructions
-      redirect_to root_path, notice: 'パスワードリセットのメールを送信しました。'
-    else
-      flash.now[:alert] = 'ユーザーが見つかりませんでした。'
-      render :new
-    end
+    @user&.deliver_reset_password_instructions!
+    redirect_to login_path
   end
 
   def edit
-    @user = User.find_by(reset_password_token: params[:id])
+    @token = params[:id]
+    @user = User.load_from_reset_password_token(params[:id])
+    return not_authenticated if @user.blank?
   end
 
   def update
-    @user = User.find_by(reset_password_token: params[:id])
-    if @user.update(user_params)
-      redirect_to root_path, notice: 'パスワードがリセットされました。'
+    @token = params[:id]
+    @user = User.load_from_reset_password_token(@token)
+    @user.password_confirmation = params[:user][:password_confirmation]
+    if @user.change_password(params[:user][:password])
+      redirect_to login_path
     else
+      flash.now[:danger]
       render :edit
     end
   end
 
-  private
+  # private
 
-  def user_params
-    params.require(:user).permit(:password, :password_confirmation)
-  end
+  # def user_params
+  #   params.require(:user).permit(:password, :password_confirmation)
+  # end
 end

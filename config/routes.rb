@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
   resources :bookmarks, only: %i[create destroy]
   resources :profiles, only: %i[show edit update]
-  resources :password_resets,only: %i[create edit update]
+  resources :password_resets, only: %i[new create edit update]
     
 
   get 'login', to: 'user_sessions#new'
