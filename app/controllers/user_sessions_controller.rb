@@ -16,9 +16,6 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
-    Rails.logger.debug "出力したい内容"
-Rails.logger.debug "出力したい内容"
-Rails.logger.debug "出力したい内容"
     logout
     redirect_to login_path, status: :see_other
   end
