@@ -82,4 +82,4 @@
 ## ドキュメント
 
 - [ワイヤーフレーム](https://www.figma.com/board/VkaLs66NBslWNYY5GFoax9/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?t=K9FgYGfDE088auYM-6)
-- [ER 図](https://i.gyazo.com/8c0d19a54e79a37718ee6d308b93a5a3.png)
+- [ER 図](https://drive.google.com/file/d/1vG8OcqCIKNP9gGMnA52fU1VH0B6o5g67/view?usp=sharing)
