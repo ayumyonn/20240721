@@ -10,16 +10,14 @@
       </form>
     </div>
   </div>
-  <!-- 掲示板一覧 -->
+  <!-- コレクション一覧 -->
   <div class="row">
     <div class="col-12">
       <div class="row">
-      <h1>Ribbon一覧</h1>
-        <% if @bookmark_posts.present? %>
-          <%= render @bookmark_posts %>
-        <% else %>
-          <p><%= t('not found') %></p>
-        <% end %>
+      <%# <h1>Ribbon一覧</h1> %>
+      <h1>Your Collections</h1>
+      <%= link_to 'All Bookmarked Posts', new_collection_path, class: "btn btn-primary", style: "width: 270px; height: 170px;" %>
+      <%= link_to 'Create New Collection', new_collection_path, class: "btn btn-primary", style: "width: 270px; height: 170px;" %>
       </div>
     </div>
   </div>
