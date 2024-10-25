@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_17_072138) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_22_083416) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_17_072138) do
     t.index ["post_id"], name: "index_bookmarks_on_post_id"
     t.index ["user_id", "post_id"], name: "index_bookmarks_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "collection_posts", force: :cascade do |t|
+    t.bigint "collection_id"
+    t.bigint "bookmark_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bookmark_id"], name: "index_collection_posts_on_bookmark_id"
+    t.index ["collection_id"], name: "index_collection_posts_on_collection_id"
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_collections_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -49,10 +67,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_17_072138) do
     t.datetime "reset_password_email_sent_at"
     t.integer "access_count_to_reset_password_page", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
   add_foreign_key "bookmarks", "posts"
   add_foreign_key "bookmarks", "users"
+  add_foreign_key "collection_posts", "bookmarks"
+  add_foreign_key "collection_posts", "collections"
+  add_foreign_key "collections", "users"
   add_foreign_key "posts", "users"
 end

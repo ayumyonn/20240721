@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :bookmarks, only: %i[create destroy]
   resources :profiles, only: %i[show edit update]
   resources :password_resets, only: %i[new create edit update]
+  resources :collections, only: %i[new create index]
     
 
   get 'login', to: 'user_sessions#new'
