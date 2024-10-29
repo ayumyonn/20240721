@@ -11,16 +11,22 @@ class CollectionsController < ApplicationController
 
   def create
     @collection = current_user.collections.build(collection_params)
-    if @collection.save
-      redirect_to collections_path, notice: 'Collection created successfully.'
-    else
-      render :new
-    end
+      if @collection.save
+        redirect_to bookmarks_collections_path, notice: 'Collection created successfully.' # ブックマークページにリダイレクト
+      else
+        render :new
+      end
   end
 
   def show
     @collection = current_user.collections.find(params[:id])
     @bookmarked_posts = @collection.bookmarks.includes(:post)
+  end
+
+  def bookmarks
+    # @bookmark_posts = Post.all # ここでブックマークの投稿を取得する
+    @bookmark_posts = current_user.bookmark_posts.includes(:user).order(created_at: :desc)
+    render :bookmarks
   end
 
   private

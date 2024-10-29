@@ -1,0 +1,21 @@
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+    </div>
+  </div>
+  <!-- コレクション一覧 -->
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <h1>新規コレクション作成</h1>
+        <%= form_with model: @collection, url: collections_path, local: true, data: { turbo: true } do |f| %>
+          <div class="mb-3">
+            <%= f.label :name, class: "form-label", style: 'font-weight: bold;' %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <%= f.submit "次へ", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
