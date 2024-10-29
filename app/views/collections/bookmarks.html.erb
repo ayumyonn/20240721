@@ -9,7 +9,7 @@
         <h1>Ribbon一覧</h1>
           <button id="select-mode-btn" class="btn btn-primary">選択モード</button>
           <% if @bookmark_posts.present? %>
-            <%# <%= render @bookmark_posts %> %>
+            <%= render @bookmark_posts %>
           <% else %>
             <p><%= t('not found') %></p>
           <% end %>
