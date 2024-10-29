@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   end
 
   root 'posts#index'
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create] do
+    get 'bookmarks', on: :member
+  end
   resources :posts, only: %i[index new create show edit destroy update] do
     collection do
       get :bookmarks
@@ -23,7 +25,13 @@ Rails.application.routes.draw do
   resources :bookmarks, only: %i[create destroy]
   resources :profiles, only: %i[show edit update]
   resources :password_resets, only: %i[new create edit update]
-  resources :collections, only: %i[new create index]
+  resources :collections, only: %i[new create index] do
+    collection do
+      get 'bookmarks'
+      # post 'create', to: 'collections#bookmarks' # この行が必要
+    end
+  end
+
     
 
   get 'login', to: 'user_sessions#new'
